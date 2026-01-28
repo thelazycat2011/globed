@@ -34,10 +34,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: central
-          path: server/target/release/central
+          path: server/target/release/globed-central-server
 
       - name: Upload game binary
         uses: actions/upload-artifact@v4
         with:
           name: game
-          path: server/target/release/game
+          path: server/target/release/globed-game-server
