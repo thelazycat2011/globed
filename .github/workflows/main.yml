@@ -1,0 +1,43 @@
+name: Build Rust Server Binaries
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      # (Optional but recommended) Cache Cargo builds
+      - name: Cache Cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            server/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('server/Cargo.lock') }}
+
+      - name: Build server workspace (release)
+        run: cargo build --release --manifest-path server/Cargo.toml
+
+      - name: Upload central binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: central
+          path: server/target/release/central
+
+      - name: Upload game binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: game
+          path: server/target/release/game
