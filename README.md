@@ -1,5 +1,8 @@
 # Globed for 2.1
 
+## Builder's note
+This repository is for server's build of Globed v0. For the mod itself, check [the original repository from dankmeme01](https://github.com/dankmeme01/globed)
+
 ## Note
 
 This repository is archived, and won't receive any updates. The mod has been rewritten from scratch and all of the development has moved to the [new repository](https://github.com/GlobedGD/globed2), and Geometry Dash 2.2 and all future versions will only be supported by the rewrite.
